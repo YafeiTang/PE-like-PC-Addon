@@ -2,9 +2,16 @@
 #include <dlfcn.h>
 #include <android/log.h>
 #include <time.h>
+#include <string>
 
 #include "Substrate.h"
 #include "mcpe.h"
+
+static std::string (*getGameVersionString_real)();
+
+static std::string getGameVersionString_hook() {
+	return "§a§lPE like PC V1.0.B1";
+}
 
 static char** gSplashes;
 
@@ -17,8 +24,8 @@ static void Touch$StartMenuScreen$chooseRandomSplash_hook(Touch::StartMenuScreen
 	gSplashes[4] = "§4§lMade by RedstoneGunMade!";
 	gSplashes[5] = "§5§lSome of the code by Byteandahalf!";
 	gSplashes[6] = "§6§lThanks for zhuoweizhang for develop BL!";
-	gSplashes[7] = "§7§lHelp needed!";
-	gSplashes[8] = "§8§lICustom splashes!";
+	gSplashes[7] = "§7§l@AgameR_Modder (peacestorm) is awesome!";
+	gSplashes[8] = "§8§lICustom splashes and game version!";
     gSplashes[9] = "§9§lIn the future... MinePocket Launcher!";
 	gSplashes[10] = "§a§lMade by John Dan!";
 	gSplashes[11] = "§b§lAlso join MinePocket Server!";
@@ -39,6 +46,9 @@ JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* reserved) {
 	MSHookFunction((void*) &Touch::StartMenuScreen::chooseRandomSplash, (void*) &Touch$StartMenuScreen$chooseRandomSplash_hook, (void**) &Touch$StartMenuScreen$chooseRandomSplash_real);
 	
 	srand(time(0));
-	
+
+void* getGameVersionString = dlsym(RTLD_DEFAULT, "_ZN6Common20getGameVersionStringEv");
+
+	MSHookFunction(getGameVersionString, (void*)&getGameVersionString_hook, (void**)&getGameVersionString_real);
 	return JNI_VERSION_1_2;
 }
