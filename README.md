@@ -7,7 +7,7 @@ Will add:
 
 -Support 0.11.0 (Done!)
 
--Atomic Launcher support! (Might Done!)
+-Atomic Launcher support! (Done!)
 
 -Block Launcher support! (Done!)
 
@@ -17,7 +17,7 @@ Will add:
 
 -Potions like PC (WIP!)
 
--Nine Hotbar Slots (Just Done!)
+-Nine Hotbar Slots (Doesn't Works for now)
 
 -Commands (Not Done!)
 
