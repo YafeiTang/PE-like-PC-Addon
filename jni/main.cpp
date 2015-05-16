@@ -7,10 +7,12 @@
 #include "Substrate.h"
 #include "mcpe.h"
 
+const std::string PElikePCVERSION = "1.0.B1";
+
 static std::string (*getGameVersionString_real)();
 
 static std::string getGameVersionString_hook() {
-	return "§a§lPE like PC V1.0.B1";
+	return "§a§lPE like PC V" + PElikePCVERSION ;
 }
 
 static char** gSplashes;
@@ -18,8 +20,8 @@ static char** gSplashes;
 static void (*Touch$StartMenuScreen$chooseRandomSplash_real)(Touch::StartMenuScreen*);
 static void Touch$StartMenuScreen$chooseRandomSplash_hook(Touch::StartMenuScreen* screen) {
 	gSplashes[0] = "§0§lSpoilers!";
-	gSplashes[1] = "§1§lLike PC?";
-	gSplashes[2] = "§2§lOriginal renderers!";
+	gSplashes[1] = "§1§lOriginal Renderers?!";
+	gSplashes[2] = "§2§lMade by Xriomedabeast!";
 	gSplashes[3] = "§3§lTileTessellator? What is that?";
 	gSplashes[4] = "§4§lMade by RedstoneGunMade!";
 	gSplashes[5] = "§5§lSome of the code by Byteandahalf!";
