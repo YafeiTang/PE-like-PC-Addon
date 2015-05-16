@@ -18,8 +18,8 @@ include $(CLEAR_VARS)
 
 LOCAL_MODULE    := net.minepocket.addon.pelikepc # should match the name in the AndroidManifest.xml
 LOCAL_SRC_FILES := main.cpp
-LOCAL_SRC_FILES :° }}}} 9slots.cpp
-LOCAL_SRC_FILES :° }}}} 9slots.cpp
+LOCAL_SRC_FILES := 9slots.cpp
+LOCAL_SRC_FILES := BD.cpp
 # search for libraries in the jni/ folder of our project,
 # link to the libraries for printing to logcat, getting methods from libminecraftpe,
 # and for accessing BlockLauncher functions
