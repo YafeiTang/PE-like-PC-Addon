@@ -17,7 +17,7 @@ Will add:
 
 -Potions like PC (WIP!)
 
--Nine Hotbar Slots (WIP?)
+-Nine Hotbar Slots (Just Done!)
 
 -Commands (Not Done!)
 
