@@ -13,9 +13,11 @@ Will add:
 
 -custom splashes (Done!)
 
--Custom Version (Just Done!)
+-Custom Version (Done!)
 
--Potions like PC (need functions of potions!)
+-Potions like PC (WIP!)
+
+-Nine Hotbar Slots (WIP?)
 
 -Commands (Not Done!)
 
@@ -43,4 +45,4 @@ Will add:
 
 Future:
 
--Custom Launcher (Dont need BL or AT! And will load custom addons and mods!)﻿
+-Custom Launcher (Dont need BL or AT! And will load custom addons and mods!)
