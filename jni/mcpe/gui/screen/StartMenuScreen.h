@@ -44,6 +44,7 @@ namespace Touch {
 		static void init_hook(StartMenuScreen *);
 		static void setupPositions_hook(StartMenuScreen *);
 		static void buttonClicked_hook(StartMenuScreen *, Button *);
+		static void chooseRandomSplash();
 	};
 }
 

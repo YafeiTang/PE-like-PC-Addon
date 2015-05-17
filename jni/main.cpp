@@ -5,25 +5,17 @@
 #include <string>
 
 #include "Substrate.h"
-#include "mcpe.h"
 #include "shared.h"
 #include "mcpe/gui/screen/StartMenuScreen.h"
 #include "mcpelauncher.h"
 
-void exampleScreen() {
-	// 버튼을 추가하기 위해 init, setupPositions, buttonClicked 세개를 Hook 합니다.
-	// You should hook these functions to create button in the start menu: init(), setupPositions(), buttonClicked().
-	mcpelauncher_hook((void *) &Touch::StartMenuScreen::init,		(void *) &Touch::StartMenuScreen::init_hook,			(void **) &Touch::StartMenuScreen::init_real);
-	mcpelauncher_hook((void *) &Touch::StartMenuScreen::setupPositions,	(void *) &Touch::StartMenuScreen::setupPositions_hook,		(void **) &Touch::StartMenuScreen::setupPositions_real);
-	mcpelauncher_hook((void *) &Touch::StartMenuScreen::buttonClicked,	(void *) &Touch::StartMenuScreen::buttonClicked_hook,		(void **) &Touch::StartMenuScreen::buttonClicked_real);
-}
-
-const std::string PElikePCVERSION = "1.0.B1";
+const std::string PElikePCVERSION = "DEV 1";
+const std::string PElikePCVERSIONNAME = "The Hunger Update";
 
 static std::string (*getGameVersionString_real)();
 
 static std::string getGameVersionString_hook() {
-	return "§a§lPE like PC V" + PElikePCVERSION ;
+	return "§a§lPE like PC v" + PElikePCVERSION + " - " + PElikePCVERSIONNAME;
 }
 
 static char** gSplashes;
@@ -57,11 +49,13 @@ JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* reserved) {
 	gSplashes = (char**) dlsym(handle, "gSplashes");
 	
 	MSHookFunction((void*) &Touch::StartMenuScreen::chooseRandomSplash, (void*) &Touch$StartMenuScreen$chooseRandomSplash_hook, (void**) &Touch$StartMenuScreen$chooseRandomSplash_real);
-	
+	MSHookFunction((void *) &Touch::StartMenuScreen::init,		(void *) &Touch::StartMenuScreen::init_hook,			(void **) &Touch::StartMenuScreen::init_real);
+	MSHookFunction((void *) &Touch::StartMenuScreen::setupPositions,	(void *) &Touch::StartMenuScreen::setupPositions_hook,		(void **) &Touch::StartMenuScreen::setupPositions_real);
+	MSHookFunction((void *) &Touch::StartMenuScreen::buttonClicked,	(void *) &Touch::StartMenuScreen::buttonClicked_hook,		(void **) &Touch::StartMenuScreen::buttonClicked_real);
 	srand(time(0));
-
-void* getGameVersionString = dlsym(RTLD_DEFAULT, "_ZN6Common20getGameVersionStringEv");
-
+	
+	void* getGameVersionString = dlsym(RTLD_DEFAULT, "_ZN6Common20getGameVersionStringEv");
+	
 	MSHookFunction(getGameVersionString, (void*)&getGameVersionString_hook, (void**)&getGameVersionString_real);
 	return JNI_VERSION_1_2;
 }
