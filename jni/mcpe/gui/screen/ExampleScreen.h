@@ -4,11 +4,8 @@
 
 // Screen을 상속하기 위해서 include
 #include "Screen.h"
-
-namespace Touch {
-	class TButton;
-	class THeader;
-}
+#include "../element/TButton.h"
+#include "../element/THeader.h"
 
 // Screen을 상속하는 ExampleScreen 스크린.
 class ExampleScreen : public Screen {

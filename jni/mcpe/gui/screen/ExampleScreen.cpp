@@ -25,7 +25,7 @@ void ExampleScreen::render(int i1, int i2, float f1) {
 	renderMenuBackground(f1);
 
 	// 글자를 렌더! "String"을 표시하고, 좌표 10, 100 에 드로우(Draw) 해줍니다. 색은 White(흰색).
-	_screenRenderer.drawString(_minecraftClient->_font, "PE like PC v1.0.B1", 10, 100, Color::WHITE);
+	_screenRenderer.drawString(_minecraftClient->_font, "PE like PC Mod", 10, 100, Color::WHITE);
 
 	// 버튼 등등을 렌더링합니다.
 	Screen::render(i1, i2, f1);

@@ -9,7 +9,7 @@
 #include "mcpe/gui/screen/StartMenuScreen.h"
 #include "mcpelauncher.h"
 
-const std::string PElikePCVERSION = "DEV 1";
+const std::string PElikePCVERSION = "1.0 DEV";
 const std::string PElikePCVERSIONNAME = "The Hunger Update";
 
 static std::string (*getGameVersionString_real)();
@@ -48,10 +48,10 @@ JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* reserved) {
 
 	gSplashes = (char**) dlsym(handle, "gSplashes");
 	
-	MSHookFunction((void*) &Touch::StartMenuScreen::chooseRandomSplash, (void*) &Touch$StartMenuScreen$chooseRandomSplash_hook, (void**) &Touch$StartMenuScreen$chooseRandomSplash_real);
-	MSHookFunction((void *) &Touch::StartMenuScreen::init,		(void *) &Touch::StartMenuScreen::init_hook,			(void **) &Touch::StartMenuScreen::init_real);
-	MSHookFunction((void *) &Touch::StartMenuScreen::setupPositions,	(void *) &Touch::StartMenuScreen::setupPositions_hook,		(void **) &Touch::StartMenuScreen::setupPositions_real);
-	MSHookFunction((void *) &Touch::StartMenuScreen::buttonClicked,	(void *) &Touch::StartMenuScreen::buttonClicked_hook,		(void **) &Touch::StartMenuScreen::buttonClicked_real);
+	MSHookFunction((void *) &Touch::StartMenuScreen::chooseRandomSplash, (void *) &Touch$StartMenuScreen$chooseRandomSplash_hook, (void**) &Touch$StartMenuScreen$chooseRandomSplash_real);
+	MSHookFunction((void *) &Touch::StartMenuScreen::init,		(void *) &Touch::StartMenuScreen::init_hook,			(void**) &Touch::StartMenuScreen::init_real);
+	MSHookFunction((void *) &Touch::StartMenuScreen::setupPositions,	(void *) &Touch::StartMenuScreen::setupPositions_hook,		(void**) &Touch::StartMenuScreen::setupPositions_real);
+	MSHookFunction((void *) &Touch::StartMenuScreen::buttonClicked,	(void *) &Touch::StartMenuScreen::buttonClicked_hook,		(voi**) &Touch::StartMenuScreen::buttonClicked_real);
 	srand(time(0));
 	
 	void* getGameVersionString = dlsym(RTLD_DEFAULT, "_ZN6Common20getGameVersionStringEv");
